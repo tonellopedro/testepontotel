@@ -1,0 +1,18 @@
+#entrada dos dados
+str = input("Cole aqui a URL da página: ")
+palavra = input ("Digite a palavra: ")
+
+#leitura do código fonte da página
+import urllib.request
+with urllib.request.urlopen(str) as response:
+    html = response.read()
+
+#conversão do código fonte para string
+    text=html.decode("utf8")
+    response.close()
+
+#contagem de ocorrências da palavra no código
+    w = text.count(palavra)
+    
+    print("a palavra é encontrada no código fonte da página ",w," vezes")
+    
