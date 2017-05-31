@@ -1,3 +1,4 @@
+import json
 #entrada dos dados
 str = input("Cole aqui a URL da página: ")
 palavra = input ("Digite a palavra: ")
@@ -12,7 +13,13 @@ with urllib.request.urlopen(str) as response:
     response.close()
 
 #contagem de ocorrências da palavra no código
-    w = text.count(palavra)
-    
-    print("a palavra é encontrada no código fonte da página ",w," vezes")
-    
+    cont = text.count(palavra)   
+
+#Amostragem do resultado
+    print('a palavra é encontrada no código fonte da página ',cont,' vezes')
+
+#Gravação em json
+    data_string = json.dumps(cont)
+    file=open('contagem.json','wb')
+    file.write(data_string.encode())
+    file.close()
